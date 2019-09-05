@@ -1,6 +1,5 @@
 package com.tw.vapasi;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot  {
@@ -32,14 +31,14 @@ public class ParkingLot  {
 
 
     void  unPark(Vehicle vehicle) throws CannotParkVehicle{
-        if((vehicle == null) && !carIsAlreadyParked(vehicle))
+        if((vehicle == null) && !isCarParked(vehicle))
         {
             throw new CannotParkVehicle();
         }
         parkingSlots.remove(vehicle);
 
     }
-    private boolean carIsAlreadyParked(Vehicle vehicle) {
+     boolean isCarParked(Vehicle vehicle) {
         return parkingSlots.contains(vehicle);
     }
 

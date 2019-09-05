@@ -1,9 +1,7 @@
 package com.tw.vapasi;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 
 import java.util.ArrayList;
 
@@ -72,6 +70,25 @@ class ParkingLotTest {
                 fail("Vehicle not present");
             }
         }
+
+        @Nested
+        class CarPresentinParking
+        {
+            @Test
+            void checkCarPresentInParking() throws CannotParkVehicle{
+                ParkingLot parkingLot = new ParkingLot(2,new ArrayList<>());
+                Vehicle vehicle = new Vehicle("KA053");
+                parkingLot.park(vehicle);
+                assertTrue(parkingLot.isCarParked(vehicle));
+            }
+        }
+            @Test
+            void checkCarNotPresentInParking() throws CannotParkVehicle{
+                ParkingLot parkingLot = new ParkingLot(2,new ArrayList<>());
+                Vehicle vehicle = new Vehicle("KA053");
+                assertFalse(parkingLot.isCarParked(vehicle));
+            }
+
 
     }
 }
