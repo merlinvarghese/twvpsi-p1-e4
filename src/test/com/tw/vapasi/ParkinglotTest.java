@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 class ParkingLotTest {
 
@@ -37,6 +38,7 @@ class ParkingLotTest {
             {
                 fail("Vehicle not present");
             }
+
         }
 
     }
@@ -47,7 +49,8 @@ class ParkingLotTest {
         @Test
         void ableToUnParkCar()
         {
-            ParkingLot parkingLot = new ParkingLot(2, new ArrayList<>());
+            ParkingOwner parkowner = mock(ParkingOwner.class);
+            ParkingLot parkingLot = new ParkingLot(2, new ArrayList<>(), parkowner);
             Vehicle vehicle = new Vehicle("KA3503");
             try {
                 parkingLot.unPark(vehicle);
@@ -60,7 +63,9 @@ class ParkingLotTest {
 
         @Test
         void notAbleToUParkCarWhenVehicleNotParked() throws CannotParkVehicle {
-            ParkingLot parkingLot = new ParkingLot(2, new ArrayList<>());
+
+            ParkingOwner parkingOwner = mock(ParkingOwner.class);
+            ParkingLot parkingLot = new ParkingLot(2, new ArrayList<>(),parkingOwner);
             Vehicle vehicle = new Vehicle("");
             try {
                 parkingLot.unPark(vehicle);
